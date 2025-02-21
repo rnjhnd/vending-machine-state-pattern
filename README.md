@@ -1,6 +1,6 @@
 # Lab-Assignment-2-State-Design-Pattern
 
-**Problem:**
+## Problem:
 A vending machine needs to manage different states, including "Idle", "ItemSelected", "Dispensing", and "OutOfOrder". Each state has specific rules and restrictions regarding allowed operations, and the vending machine has associated attributes like item inventory and balance.
 
 **Requirements:**
@@ -22,7 +22,7 @@ A vending machine needs to manage different states, including "Idle", "ItemSelec
 
 **Current System:** The system currently relies on conditional statements within the VendingMachine class to check the machine state and determine valid actions. This approach becomes cumbersome and error-prone as the number of states and their associated logic grows.<br/><br/>
 
-**Implement the State Pattern to improve code maintainability and flexibility:**
+## Implement the State Pattern to improve code maintainability and flexibility:
 
 **1. Define VendingMachine States:**
   - Create separate classes representing different machine states: IdleState, ItemSelectedState, DispensingState, and OutOfOrderState.
