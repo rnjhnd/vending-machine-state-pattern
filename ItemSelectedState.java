@@ -1,7 +1,7 @@
 public class ItemSelectedState implements VendingMachineState {
     @Override
     public void selectItem(VendingMachine machine, String item) {
-        System.out.println("Item chosen... Please insert the required coins.");
+        System.out.println("Item chosen. Please insert the required coins.");
     }
 
     @Override

@@ -15,7 +15,7 @@ public class IdleState implements VendingMachineState {
     @Override
     public void dispenseItem(VendingMachine machine) {
         if (!machine.isItemSelected()) {
-            System.out.println("No item has been chosen... Please select an item first.");
+            System.out.println("No item has been chosen. Please select an item first.");
         }
     }
 
