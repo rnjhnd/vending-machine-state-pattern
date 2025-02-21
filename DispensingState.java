@@ -1,7 +1,7 @@
 public class DispensingState implements VendingMachineState {
     @Override
     public void selectItem(VendingMachine machine, String item) {
-        System.out.println("Currently dispensing an item. Please wait.");
+        System.out.println("Currently dispensing an item... Please wait.");
     }
 
     @Override
@@ -19,7 +19,7 @@ public class DispensingState implements VendingMachineState {
 
     @Override
     public void setOutOfOrder(VendingMachine machine) {
-        System.out.println("The vending machine is now out of service!");
+        System.out.println("The vending machine is now out of service.");
         machine.setState(new OutOfOrderState());
     }
 }
