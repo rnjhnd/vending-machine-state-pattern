@@ -11,7 +11,7 @@ public class DispensingState implements VendingMachineState {
 
     @Override
     public void dispenseItem(VendingMachine machine) {
-        machine.decreaseItemStock();
+        machine.reduceltemInventory();
         machine.setBalance(machine.getBalance() - machine.getItemPrice());
         System.out.println("Your item is ready! Switching back to Idle Mode...");
         machine.setState(new IdleState());

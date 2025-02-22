@@ -57,7 +57,7 @@ public class VendingMachine {
         this.selectedItem = selectedItem;
     }
 
-    public void decreaseItemStock() {
+    public void reduceltemInventory() {
         inventory--;
     }
  
