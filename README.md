@@ -158,8 +158,7 @@ vendingMachine.selectItem("Soda");   // ❌ "Machine is out of order"
 ```
 
 ## 🏗️ UML Class Diagram
-
-![UML Class Diagram](UML%20Class%20Diagram.png)
+<img width="1980" height="670" alt="UML Class Diagram" src="https://github.com/user-attachments/assets/ae7b7c13-00ae-4639-b7a1-576aedbc6b7e" />
 
 The diagram shows the relationship between the `VendingMachine` class and its state implementations, demonstrating the State Pattern structure.
 
