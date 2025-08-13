@@ -43,16 +43,15 @@ The State Pattern provides a clean solution by:
 
 ```
 vending-machine-state-pattern/
-├── README.md
 ├── src/
 │   ├── VendingMachine.java          # Main vending machine class
 │   ├── VendingMachineState.java     # State interface
-│   ├── IdleState.java              # Idle state implementation
-│   ├── ItemSelectedState.java      # Item selected state implementation
-│   ├── DispensingState.java        # Dispensing state implementation
-│   ├── OutOfOrderState.java        # Out of order state implementation
-│   └── VendingMachineTest.java     # Test/demo class
-└── UML Class Diagram.png           # System architecture diagram
+│   ├── IdleState.java               # Idle state implementation
+│   ├── ItemSelectedState.java       # Item selected state implementation
+│   ├── DispensingState.java         # Dispensing state implementation
+│   ├── OutOfOrderState.java         # Out of order state implementation
+│   └── VendingMachineTest.java      # Test/demo class
+└── README.md                        # Project documentation
 ```
 
 ## ✨ Features
