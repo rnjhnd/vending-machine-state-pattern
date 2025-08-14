@@ -1,95 +1,89 @@
 # Vending Machine State Management System
 
-A Java implementation of a vending machine using the **State Design Pattern** to manage different operational states and their associated behaviors.
+A Java implementation of the **State Design Pattern** for efficient vending machine state management. This project demonstrates how to use state objects to manage different operational behaviors without complex conditional statements.
 
-## 📋 Table of Contents
+## 📋 Overview
 
-- [Overview](#overview)
-- [Problem Statement](#problem-statement)
-- [Solution: State Pattern Implementation](#solution-state-pattern-implementation)
-- [Project Structure](#project-structure)
-- [Features](#features)
-- [Installation & Usage](#installation--usage)
-- [Code Examples](#code-examples)
-- [State Transitions](#state-transitions)
-- [UML Class Diagram](#uml-class-diagram)
-- [Benefits of State Pattern](#benefits-of-state-pattern)
-- [Contributing](#contributing)
-- [License](#license)
+The Vending Machine State Pattern allows you to manage a vending machine's different operational states (Idle, Item Selected, Dispensing, and Out of Order) using separate state classes. Instead of using complex if-else statements, the system delegates behavior to the current state object, making the code more maintainable and extensible.
 
-## 🎯 Overview
+## 🏗️ Architecture
 
-This project demonstrates the implementation of the **State Design Pattern** to manage a vending machine's different operational states. Instead of using complex conditional statements, the system uses separate state classes to handle behavior based on the current state of the vending machine.
+This project implements the **State Design Pattern** with the following components:
 
-## ❓ Problem Statement
+- **VendingMachineState Interface**: Defines the contract for all state implementations
+- **VendingMachine Context**: Main class that delegates operations to current state
+- **Concrete State Classes**: IdleState, ItemSelectedState, DispensingState, and OutOfOrderState
+- **Test Application**: Demonstrates the state pattern in action
 
-Traditional vending machine implementations often rely on conditional statements within a single class to check the machine's state and determine valid actions. This approach becomes:
+### Design Pattern Benefits
 
-- **Cumbersome** as the number of states grows
-- **Error-prone** due to complex state logic
-- **Hard to maintain** when adding new states or behaviors
-- **Difficult to test** individual state behaviors
+- **Clean Separation**: Each state handles its own logic independently
+- **Extensibility**: Easy to add new states without modifying existing code
+- **Maintainability**: State-specific behavior is isolated and easy to understand
+- **Testability**: Each state can be tested independently
+- **Eliminates Complex Conditionals**: No more nested if-else statements
 
-## 💡 Solution: State Pattern Implementation
+## 📊 UML Class Diagram
 
-The State Pattern provides a clean solution by:
+![image](https://github.com/user-attachments/assets/ae7b7c13-00ae-4639-b7a1-576aedbc6b7e)
 
-1. **Defining State Interface**: `VendingMachineState` interface with common operations
-2. **Creating Concrete States**: Separate classes for each state (`IdleState`, `ItemSelectedState`, `DispensingState`, `OutOfOrderState`)
-3. **Delegating Behavior**: The main `VendingMachine` class delegates operations to the current state object
-4. **Managing Transitions**: Each state handles its own transitions to other states
+The following diagram illustrates:
+- The architecture of the Vending Machine State Pattern
+- Relationships between the core components:
+  - The `VendingMachineState` interface
+  - Concrete implementations: `IdleState`, `ItemSelectedState`, `DispensingState`, `OutOfOrderState`
+  - The `VendingMachine` context class
+  - The test application class
+- How the State design pattern is applied in this project
+
+## 🚀 Features
+
+- **Multiple Operational States**: Support for Idle, Item Selected, Dispensing, and Out of Order states
+- **State-Specific Behavior**: Each state implements its own business logic
+- **Automatic State Transitions**: States handle transitions to other states
+- **Inventory Management**: Tracks item inventory and balance
+- **Clean Architecture**: Well-structured, maintainable code
 
 ## 📁 Project Structure
 
 ```
 vending-machine-state-pattern/
 ├── src/
-│   ├── VendingMachine.java          # Main vending machine class
+│   ├── VendingMachine.java          # Main vending machine context class
 │   ├── VendingMachineState.java     # State interface
 │   ├── IdleState.java               # Idle state implementation
 │   ├── ItemSelectedState.java       # Item selected state implementation
 │   ├── DispensingState.java         # Dispensing state implementation
 │   ├── OutOfOrderState.java         # Out of order state implementation
-│   └── VendingMachineTest.java      # Test/demo class
+│   └── VendingMachineTest.java      # Test/demo application
 └── README.md                        # Project documentation
 ```
 
-## ✨ Features
-
-### State Management
-- **Idle State**: Allows item selection, prevents coin insertion and dispensing
-- **Item Selected State**: Allows coin insertion and dispensing, prevents item selection
-- **Dispensing State**: No operations allowed, automatically returns to idle after completion
-- **Out of Order State**: All operations disabled
-
-### Core Operations
-- Item selection with inventory tracking
-- Coin insertion with balance management
-- Item dispensing with automatic inventory reduction
-- System status management (out of order functionality)
-
-## 🚀 Installation & Usage
+## 🛠️ Installation & Setup
 
 ### Prerequisites
-- Java 8 or higher
+
+- Java Development Kit (JDK) 8 or higher
 - Any Java IDE (IntelliJ IDEA, Eclipse, VS Code, etc.)
 
-### Running the Application
+### Getting Started
 
 1. **Clone or download** the project files
-2. **Navigate** to the `src` directory
+2. **Navigate** to the project directory
 3. **Compile** the Java files:
    ```bash
-   javac *.java
+   javac src/*.java
    ```
-4. **Run** the test application:
+4. **Run** the application:
    ```bash
-   java VendingMachineTest
+   java -cp src VendingMachineTest
    ```
 
-## 💻 Code Examples
+## 📖 Usage
 
 ### Basic Usage
+
+The main application (`VendingMachineTest.java`) demonstrates how to use the state pattern:
 
 ```java
 // Create a vending machine with 10 items in inventory
@@ -119,6 +113,22 @@ vendingMachine.insertCoin(25);       // ❌ "Please select an item before insert
 
 // In OutOfOrderState - no operations are allowed
 vendingMachine.selectItem("Soda");   // ❌ "Machine is out of order"
+```
+
+### Expected Output
+
+When you run the application, you'll see:
+
+```
+Item selected: Soda
+Coin inserted: 50
+Dispensing Soda...
+Item dispensed successfully!
+The vending machine is now out of service.
+Machine is out of order
+
+Stock remaining: 9
+Current balance: 40
 ```
 
 ## 🔄 State Transitions
@@ -156,41 +166,61 @@ vendingMachine.selectItem("Soda");   // ❌ "Machine is out of order"
     └─────────────┘
 ```
 
-## 🏗️ UML Class Diagram
-<img width="1980" height="670" alt="UML Class Diagram" src="https://github.com/user-attachments/assets/ae7b7c13-00ae-4639-b7a1-576aedbc6b7e" />
+## 🔧 Extending the Project
 
-The diagram shows the relationship between the `VendingMachine` class and its state implementations, demonstrating the State Pattern structure.
+### Adding New States
 
-## 🎯 Benefits of State Pattern
+To add a new state (e.g., `MaintenanceState`):
 
-### ✅ Advantages
-- **Clean Separation of Concerns**: Each state handles its own logic
-- **Easy to Extend**: Adding new states doesn't require modifying existing code
-- **Improved Maintainability**: State-specific behavior is isolated
-- **Better Testability**: Each state can be tested independently
-- **Eliminates Complex Conditionals**: No more nested if-else statements
+1. **Create** a new class implementing the `VendingMachineState` interface
+2. **Implement** all required methods (`selectItem()`, `insertCoin()`, `dispenseItem()`, `setOutOfOrder()`)
+3. **Add** state transition logic as needed
 
-### 🔄 State-Specific Benefits
-- **IdleState**: Handles item selection logic
-- **ItemSelectedState**: Manages coin insertion and dispensing preparation
-- **DispensingState**: Controls the dispensing process and automatic transitions
-- **OutOfOrderState**: Provides system shutdown functionality
+Example:
+```java
+public class MaintenanceState implements VendingMachineState {
+    @Override
+    public void selectItem(VendingMachine machine, String item) {
+        System.out.println("Machine is under maintenance. Please try again later.");
+    }
+    
+    @Override
+    public void insertCoin(VendingMachine machine, int amount) {
+        System.out.println("Machine is under maintenance. Please try again later.");
+    }
+    
+    @Override
+    public void dispenseItem(VendingMachine machine) {
+        System.out.println("Machine is under maintenance. Please try again later.");
+    }
+    
+    @Override
+    public void setOutOfOrder(VendingMachine machine) {
+        System.out.println("Machine is already under maintenance.");
+    }
+}
+```
+
+## 🎯 Design Patterns Used
+
+### State Pattern
+- **Purpose**: Allow an object to alter its behavior when its internal state changes
+- **Benefits**: Eliminates complex conditional statements and improves code organization
+- **Implementation**: Each state class implements the `VendingMachineState` interface
+
+### Context Pattern
+- **Purpose**: Maintains a reference to a state object and delegates state-specific behavior
+- **Benefits**: Provides a clean interface for state-dependent operations
+- **Implementation**: `VendingMachine` class acts as the context and delegates to current state
 
 ## 🤝 Contributing
 
-Contributions are welcome! Here are some ways you can contribute:
-
-1. **Add new states** (e.g., `MaintenanceState`, `PaymentProcessingState`)
-2. **Enhance existing functionality** (e.g., multiple item types, change calculation)
-3. **Improve error handling** and user feedback
-4. **Add comprehensive unit tests**
-5. **Update documentation** and examples
-
-### Development Guidelines
-- Follow Java naming conventions
-- Add comments for complex logic
-- Include test cases for new features
-- Update the UML diagram when adding new states
+Feel free to contribute to this project by:
+- Adding new states (e.g., `PaymentProcessingState`, `MaintenanceState`)
+- Enhancing existing functionality (e.g., multiple item types, change calculation)
+- Improving error handling and user feedback
+- Adding comprehensive unit tests
+- Updating documentation and examples
 
 ## 📄 License
 
